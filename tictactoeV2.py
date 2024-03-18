@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 import random
+import sys
+import os
 
 pygame.init()
 
@@ -9,7 +11,7 @@ screen_height = 300
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Le meilleur jeu')
 
-background_img = pygame.image.load("TicTacToe/images/background_image.jpg")
+background_img = pygame.image.load("images/background_image.jpg")
 background_img = pygame.transform.scale(background_img, (screen_width, screen_height))
 
 #definir les variables
@@ -22,9 +24,12 @@ winner = 0
 game_over = False
 
 # Charger les images des joueurs
-x_imgs = [pygame.image.load(f"TicTacToe/images/player1/coco{i}.png") for i in range(1, 11)]
-o_imgs = [pygame.image.load(f"TicTacToe/images/player2/mango{i}.png") for i in range(1, 11)]
+x_imgs = [pygame.image.load(f"images/player1/coco{i}.png") for i in range(1, 11)]
+o_imgs = [pygame.image.load(f"images/player2/mango{i}.png") for i in range(1, 11)]
 img_size = (100, 100) 
+
+if getattr(sys, 'frozen', False):
+    os.chdir(sys._MEIPASS)
 
 #couleurs
 rougePale = (243, 186, 186)
